@@ -1,1 +1,13 @@
-<p>nav-banner works!</p>
+<div class="banner-container">
+  <i class="pi pi-home"></i>
+  <i class="pi pi-tags"
+     [ngStyle]="{'margin-right': piTagsMarginRightPx}"></i>
+  <i class="pi pi-search"
+     (click)="toggleSearch()"
+     [ngStyle]="{'margin-right': piSearchMarginRightPx}"></i>
+  <span class="ui-float-label"
+        *ngIf="showSearch">
+      <input id="float-input" type="text" size="30" pInputText>
+      <label for="float-input">Search</label>
+  </span>
+</div>
