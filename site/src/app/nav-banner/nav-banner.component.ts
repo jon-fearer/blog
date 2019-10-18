@@ -15,6 +15,8 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   ]
 })
 export class NavBannerComponent implements OnInit {
+  value: Date;
+  showCalendar = true;
 
   constructor() { }
 
@@ -22,6 +24,10 @@ export class NavBannerComponent implements OnInit {
   @ViewChild('search', { static: false }) searchField: ElementRef;
 
   ngOnInit() {
+  }
+
+  toggleCalendar() {
+    this.showCalendar = !this.showCalendar;
   }
 
   toggleSearch() {

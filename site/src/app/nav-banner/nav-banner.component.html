@@ -1,6 +1,9 @@
 <div class="banner-container">
   <i class="pi pi-home"></i>
   <span id="button-span" [@slide]="searchActivated">
+    <i class="pi pi-calendar"
+       (click)="toggleCalendar()"
+    ></i>
     <i class="pi pi-tags"></i>
     <i class="pi pi-search"
        (click)="toggleSearch()"></i>
@@ -13,3 +16,13 @@
       pInputText>
   </span>
 </div>
+<p-calendar
+  [(ngModel)]="value"
+  [inline]="true"
+  view="month"
+  dateFormat="mm/yy"
+  [yearNavigator]="true"
+  yearRange="2000:2030"
+  [readonlyInput]="true"
+  *ngIf="showCalendar">
+</p-calendar>
