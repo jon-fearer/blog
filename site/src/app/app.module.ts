@@ -9,6 +9,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { NavBannerComponent } from './nav-banner/nav-banner.component';
 import { PostPreviewComponent } from './post-preview/post-preview.component';
 import { PostComponent } from './post/post.component';
+import { InputTextModule } from 'primeng/inputtext';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { PostComponent } from './post/post.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     AccordionModule,
+    InputTextModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

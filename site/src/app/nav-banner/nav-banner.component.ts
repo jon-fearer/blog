@@ -1,36 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+
 
 @Component({
   selector: 'app-nav-banner',
   templateUrl: './nav-banner.component.html',
-  styleUrls: ['./nav-banner.component.scss']
+  styleUrls: ['./nav-banner.component.scss'],
+  animations: [
+    trigger('slide', [
+      state('false', style({ transform: 'translateX(0)' })),
+      state('true', style({ transform: 'translateX(-215px)' })),
+      transition('* => *', animate(200))
+    ])
+  ]
 })
 export class NavBannerComponent implements OnInit {
-  showSearch = false;
-
-  piTagsMarginRight = 45;
-  piTagsMarginRightPx = `${this.piTagsMarginRight}px`;
-  piSearchMarginRight = 10;
-  piSearchMarginRightPx = `${this.piSearchMarginRight}px`;
 
   constructor() { }
+
+  @Input() searchActivated = 'false';
+  @ViewChild('search', { static: false }) searchField: ElementRef;
 
   ngOnInit() {
   }
 
   toggleSearch() {
-    this.showSearch = !this.showSearch;
-
-    if (this.showSearch) {
-      this.piTagsMarginRight += 200;
-      this.piSearchMarginRight += 200;
+    if (this.searchActivated === 'false') {
+      this.searchActivated = 'true';
+      setTimeout(() => this.searchField.nativeElement.focus(), 300);
     } else {
-      this.piTagsMarginRight -= 200;
-      this.piSearchMarginRight -= 200;
+      this.searchActivated = 'false';
     }
-
-    this.piTagsMarginRightPx = `${this.piTagsMarginRight}px`;
-    this.piSearchMarginRightPx = `${this.piSearchMarginRight}px`;
   }
 
 }

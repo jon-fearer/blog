@@ -1,18 +1,21 @@
 .pi {
-  color: #D3D3D3;
+  color: #C0C0C0;
   font-size: 2em;
 }
 
-.pi-tags, .pi-search {
+#button-span {
   position: absolute;
-  right: 0;
+  right: -222px;
+  margin-right: 25px;
+  overflow: hidden;
 }
 
-.ui-float-label {
-  margin-top: 5px;
+.pi-search {
+  margin-right: 10px;
+}
+
+#search-input {
+  margin-top: 2px;
   float: right;
-}
-
-#float-input {
   height: 30px;
 }
