@@ -3,19 +3,21 @@
   font-size: 2em;
 }
 
-#button-span {
-  position: absolute;
-  right: -222px;
-  margin-right: 25px;
+.banner-container {
   overflow: hidden;
+}
+
+#nav-buttons {
+  float: right;
+  display: inline-flex;
+  margin-right: -200px;
 }
 
 .pi-search {
   margin-right: 10px;
 }
 
-#search-input {
-  margin-top: 2px;
+p-calendar {
   float: right;
-  height: 30px;
+  width: 250px;
 }

@@ -9,14 +9,15 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   animations: [
     trigger('slide', [
       state('false', style({ transform: 'translateX(0)' })),
-      state('true', style({ transform: 'translateX(-215px)' })),
+      state('true', style({ transform: 'translateX(-200px)' })),
       transition('* => *', animate(200))
     ])
   ]
 })
 export class NavBannerComponent implements OnInit {
   value: Date;
-  showCalendar = true;
+
+  showCalendar = false;
 
   constructor() { }
 

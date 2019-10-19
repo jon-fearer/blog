@@ -1,20 +1,19 @@
 <div class="banner-container">
   <i class="pi pi-home"></i>
-  <span id="button-span" [@slide]="searchActivated">
+  <div id="nav-buttons" [@slide]="searchActivated">
     <i class="pi pi-calendar"
-       (click)="toggleCalendar()"
-    ></i>
+       (click)="toggleCalendar()"></i>
     <i class="pi pi-tags"></i>
     <i class="pi pi-search"
        (click)="toggleSearch()"></i>
     <input id="search-input"
       type="text"
-      size="25"
       placeholder="Search"
       #search
       (focusout)="toggleSearch()"
+      size="25"
       pInputText>
-  </span>
+  </div>
 </div>
 <p-calendar
   [(ngModel)]="value"
@@ -24,5 +23,6 @@
   [yearNavigator]="true"
   yearRange="2000:2030"
   [readonlyInput]="true"
+  (focusout)="toggleCalendar()"
   *ngIf="showCalendar">
 </p-calendar>
