@@ -63,10 +63,10 @@ export class NavBannerComponent implements OnInit {
 
   toggleSearch() {
     if (this.searchActivated === 'false') {
-      this.searchActivated = 'true';
+      setTimeout(() => this.searchActivated = 'true', 100);
       setTimeout(() => this.searchField.nativeElement.focus(), 300);
     } else {
-      this.searchActivated = 'false';
+      setTimeout(() => this.searchActivated = 'false', 100);
     }
   }
 
@@ -90,7 +90,8 @@ export class NavBannerComponent implements OnInit {
     if ('toElement' in event) {
       if ('className' in event.toElement) {
         if (event.toElement.className !== 'ui-button-text ui-clickable'
-            && event.toElement.className !== 'tag-container') {
+            && event.toElement.className !== 'tag-container'
+            && event.toElement.className !== 'pi pi-tags') {
           this.showTags = !this.showTags;
 
           return;

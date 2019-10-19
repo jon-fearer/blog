@@ -6,6 +6,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post-preview.component.scss']
 })
 export class PostPreviewComponent implements OnInit {
+  posts = [
+    {
+      title: 'Doing Stuff With Typescript',
+      img: '',
+      path: '',
+    },
+    {
+      title: 'Doing Stuff With AWS',
+      img: '',
+      path: '',
+    },
+    {
+      title: 'Doing Stuff With Postgres',
+      img: '',
+      path: '',
+    },
+  ];
 
   constructor() { }
 

@@ -2,8 +2,14 @@ button {
   margin: 5px;
 }
 
+.tag-component-container {
+  display: flex;
+  justify-content: center;
+}
+
 .tag-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  width: 75%;
 }

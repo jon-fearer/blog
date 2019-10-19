@@ -1,1 +1,6 @@
-<p>post-preview works!</p>
+<div class="post-preview-container">
+  <div class="post-summary"
+    *ngFor="let post of posts">
+    <h3>{{ post.title }}</h3>
+  </div>
+</div>
