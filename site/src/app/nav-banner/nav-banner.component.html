@@ -4,7 +4,7 @@
     <i class="pi pi-calendar"
        (click)="toggleCalendar('icon-click')"></i>
     <i class="pi pi-tags"
-       (click)="toggleTags()"></i>
+       (click)="toggleTags('icon-click')"></i>
     <i class="pi pi-search"
        (click)="toggleSearch()"></i>
     <input id="search-input"
@@ -27,5 +27,6 @@
   *ngIf="showCalendar">
 </p-calendar>
 <app-tags
+  (window:mouseup)="toggleTags($event)"
   *ngIf="showTags">
 </app-tags>

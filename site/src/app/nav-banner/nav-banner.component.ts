@@ -37,7 +37,7 @@ export class NavBannerComponent implements OnInit {
   ngOnInit() {
   }
 
-  toggleCalendar(event) {
+  toggleCalendar(event: any) {
     if (!event) {
       return;
     }
@@ -76,8 +76,27 @@ export class NavBannerComponent implements OnInit {
     setTimeout(() => this.showCalendar = false, 100);
   }
 
-  toggleTags() {
-    this.showTags = !this.showTags;
+  toggleTags(event: any) {
+    if (!event) {
+      return;
+    }
+
+    if (event === 'icon-click') {
+      this.showTags = !this.showTags;
+
+      return;
+    }
+
+    if ('toElement' in event) {
+      if ('className' in event.toElement) {
+        if (event.toElement.className !== 'ui-button-text ui-clickable'
+            && event.toElement.className !== 'tag-container') {
+          this.showTags = !this.showTags;
+
+          return;
+        }
+      }
+    }
   }
 
 }
