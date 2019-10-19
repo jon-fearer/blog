@@ -25,6 +25,8 @@ export class NavBannerComponent implements OnInit {
 
   showCalendar = false;
 
+  showTags = false;
+
   yearRange = `2019:${new Date().getFullYear()}`;
 
   constructor() { }
@@ -49,7 +51,8 @@ export class NavBannerComponent implements OnInit {
     if ('toElement' in event) {
       if ('className' in event.toElement) {
         if (!event.toElement.className.includes('monthpicker')
-            && !event.toElement.className.includes('datepicker')) {
+            && !event.toElement.className.includes('datepicker')
+            && !event.toElement.className.includes('pi-calendar')) {
           this.showCalendar = !this.showCalendar;
 
           return;
@@ -71,6 +74,10 @@ export class NavBannerComponent implements OnInit {
     console.log(value);
 
     setTimeout(() => this.showCalendar = false, 100);
+  }
+
+  toggleTags() {
+    this.showTags = !this.showTags;
   }
 
 }

@@ -12,13 +12,17 @@ import { PostPreviewComponent } from './post-preview/post-preview.component';
 import { PostComponent } from './post/post.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
+import { TagsComponent } from './nav-banner/tags/tags.component';
+import { ButtonModule } from 'primeng/button';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBannerComponent,
     PostPreviewComponent,
-    PostComponent
+    PostComponent,
+    TagsComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +32,7 @@ import { CalendarModule } from 'primeng/calendar';
     AccordionModule,
     InputTextModule,
     CalendarModule,
+    ButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

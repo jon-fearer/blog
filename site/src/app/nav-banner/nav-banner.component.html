@@ -3,7 +3,8 @@
   <div id="nav-buttons" [@slide]="searchActivated">
     <i class="pi pi-calendar"
        (click)="toggleCalendar('icon-click')"></i>
-    <i class="pi pi-tags"></i>
+    <i class="pi pi-tags"
+       (click)="toggleTags()"></i>
     <i class="pi pi-search"
        (click)="toggleSearch()"></i>
     <input id="search-input"
@@ -19,11 +20,12 @@
   [(ngModel)]="value"
   [inline]="true"
   view="month"
-  dateFormat="mm/yy"
   [yearNavigator]="true"
   [yearRange]="yearRange"
-  [readonlyInput]="true"
   (window:mouseup)="toggleCalendar($event)"
   (onSelect)="filterPosts(value)"
   *ngIf="showCalendar">
 </p-calendar>
+<app-tags
+  *ngIf="showTags">
+</app-tags>
