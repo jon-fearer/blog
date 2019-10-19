@@ -1,4 +1,10 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 
@@ -19,6 +25,8 @@ export class NavBannerComponent implements OnInit {
 
   showCalendar = false;
 
+  yearRange = `2019:${new Date().getFullYear()}`;
+
   constructor() { }
 
   @Input() searchActivated = 'false';
@@ -27,8 +35,27 @@ export class NavBannerComponent implements OnInit {
   ngOnInit() {
   }
 
-  toggleCalendar() {
-    this.showCalendar = !this.showCalendar;
+  toggleCalendar(event) {
+    if (!event) {
+      return;
+    }
+
+    if (event === 'icon-click') {
+      this.showCalendar = !this.showCalendar;
+
+      return;
+    }
+
+    if ('toElement' in event) {
+      if ('className' in event.toElement) {
+        if (!event.toElement.className.includes('monthpicker')
+            && !event.toElement.className.includes('datepicker')) {
+          this.showCalendar = !this.showCalendar;
+
+          return;
+        }
+      }
+    }
   }
 
   toggleSearch() {
@@ -38,6 +65,12 @@ export class NavBannerComponent implements OnInit {
     } else {
       this.searchActivated = 'false';
     }
+  }
+
+  filterPosts(value: Date) {
+    console.log(value);
+
+    setTimeout(() => this.showCalendar = false, 100);
   }
 
 }

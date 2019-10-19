@@ -2,7 +2,7 @@
   <i class="pi pi-home"></i>
   <div id="nav-buttons" [@slide]="searchActivated">
     <i class="pi pi-calendar"
-       (click)="toggleCalendar()"></i>
+       (click)="toggleCalendar('icon-click')"></i>
     <i class="pi pi-tags"></i>
     <i class="pi pi-search"
        (click)="toggleSearch()"></i>
@@ -21,8 +21,9 @@
   view="month"
   dateFormat="mm/yy"
   [yearNavigator]="true"
-  yearRange="2000:2030"
+  [yearRange]="yearRange"
   [readonlyInput]="true"
-  (focusout)="toggleCalendar()"
+  (window:mouseup)="toggleCalendar($event)"
+  (onSelect)="filterPosts(value)"
   *ngIf="showCalendar">
 </p-calendar>
