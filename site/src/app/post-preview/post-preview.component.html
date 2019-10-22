@@ -1,10 +1,10 @@
 <div class="post-preview-container">
   <div class="post-summary"
     *ngFor="let post of posts">
-  {{ post.title }}
-  <br>
-  <img src="assets/pg.png" width="500px">
-  <br>
-  <br>
+    <div class="post-title">{{ post.title }}</div>
+    <div class="post-text">{{ post.text }}</div>
+    <img src="assets/pg.png" width="500px">
+    <br>
+    <br>
   </div>
 </div>

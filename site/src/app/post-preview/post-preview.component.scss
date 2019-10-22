@@ -4,6 +4,17 @@
   justify-content: center;
   align-items: center;
   font-family: "Times New Roman", Times, serif;
-  font-weight: bold;
   margin-top: 40px;
+}
+
+.post-title {
+  font-weight: bold;
+}
+
+.post-text {
+  color: #A9A9A9;
+}
+
+.post-summary {
+  width: 500px;
 }
