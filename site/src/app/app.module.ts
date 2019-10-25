@@ -14,6 +14,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
 import { TagsComponent } from './nav-banner/tags/tags.component';
 import { ButtonModule } from 'primeng/button';
+import { BioComponent } from './bio/bio.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ButtonModule } from 'primeng/button';
     NavBannerComponent,
     PostPreviewComponent,
     PostComponent,
-    TagsComponent
+    TagsComponent,
+    BioComponent
   ],
   imports: [
     BrowserModule,

@@ -3,4 +3,11 @@ app-nav-banner {
   right: 5px;
   top: 5px;
   width: 100%;
+  z-index: 1;
+}
+
+app-bio {
+  position: fixed;
+  right: 10px;
+  top: 200px;
 }
