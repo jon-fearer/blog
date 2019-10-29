@@ -4,17 +4,22 @@
   justify-content: center;
   align-items: center;
   font-family: "Times New Roman", Times, serif;
-  margin-top: 40px;
+  margin-top: 60px;
 }
 
 .post-title {
   font-weight: bold;
+  color: #808080;
+  font-size: 24px;
 }
 
-.post-text {
-  color: #A9A9A9;
+.post-date {
+  font-weight: bold;
+  color: #808080;
+  float: right;
+  margin-top: 10px;
 }
 
 .post-summary {
-  width: 500px;
+  width: 470px;
 }

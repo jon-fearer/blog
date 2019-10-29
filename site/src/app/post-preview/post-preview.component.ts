@@ -20,18 +20,21 @@ export class PostPreviewComponent implements OnInit {
       img: '',
       path: '',
       text: this.loremText,
+      postedOn: new Date().toLocaleDateString(),
     },
     {
       title: 'Doing Stuff With AWS',
       img: '',
       path: '',
       text: this.loremText,
+      postedOn: new Date().toLocaleDateString(),
     },
     {
       title: 'Doing Stuff With Postgres',
       img: '',
       path: '',
       text: this.loremText,
+      postedOn: new Date().toLocaleDateString(),
     },
   ];
 
