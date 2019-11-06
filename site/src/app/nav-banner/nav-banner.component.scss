@@ -1,10 +1,14 @@
 .pi {
-  color: #C0C0C0;
+  color: #808080;
   font-size: 2em;
 }
 
 .pi-home {
   margin-left: 10px;
+
+  @media only screen and (max-width: 500px) {
+    display: none;
+  }
 }
 
 .banner-container {
@@ -15,6 +19,10 @@
   float: right;
   display: inline-flex;
   margin-right: -200px;
+
+  @media only screen and (max-width: 500px) {
+    display: none;
+  }
 }
 
 .pi-search {
@@ -29,4 +37,14 @@ p-calendar {
 app-tags {
   float: right;
   width: 200px;
+}
+
+.pi-bars {
+  float: right;
+  display: none;
+  font-size: 3em;
+
+  @media only screen and (max-width: 500px) {
+    display: block;
+  }
 }
