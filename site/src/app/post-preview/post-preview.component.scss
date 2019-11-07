@@ -1,5 +1,8 @@
+$primary-grey: #808080;
+
+
 .post-preview-container {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   margin-top: 60px;
   margin-left: auto;
   margin-right: auto;
@@ -7,13 +10,13 @@
 
   @media only screen and (max-width: 500px) {
     width: auto;
+    margin-top: 0px;
     max-width: 470px;
   }
 }
 
 .post-title {
-  font-weight: bold;
-  color: #808080;
+  color: $primary-grey;
   font-size: 24px;
   white-space: nowrap;
 
@@ -23,8 +26,7 @@
 }
 
 .post-date {
-  font-weight: bold;
-  color: #808080;
+  color: $primary-grey;
   float: right;
   margin-top: 10px;
   display: block;
