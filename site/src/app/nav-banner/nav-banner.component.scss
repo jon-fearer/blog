@@ -39,12 +39,27 @@ app-tags {
   width: 200px;
 }
 
-.pi-bars {
+.pi-bars-container {
   float: right;
   display: none;
-  font-size: 3em;
+  font-size: 1.5em;
+  height: 60px;
+  width: 60px;
+  background-color:white;
+  border-radius: 50%;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  -webkit-box-shadow: 3px 3px 5px #ccc;
+  -moz-box-shadow: 3px 3px 5px #ccc;
+  box-shadow: 3px 3px 5px #ccc;
 
   @media only screen and (max-width: 500px) {
-    display: block;
+    display: inline-block;
   }
+}
+
+.pi-bars {
+  margin-top: 5px;
+  margin-left: 6px;
 }

@@ -7,8 +7,7 @@
 
   @media only screen and (max-width: 500px) {
     width: auto;
-    max-width: 500px;
-    margin-top: 0px;
+    max-width: 470px;
   }
 }
 
@@ -19,7 +18,7 @@
   white-space: nowrap;
 
   @media only screen and (max-width: 500px) {
-    font-size: 36px;
+    font-size: 32px;
   }
 }
 
@@ -33,4 +32,9 @@
   @media only screen and (max-width: 500px) {
     display: none;
   }
+}
+
+img {
+  width: auto;
+  max-width: 470px;
 }
