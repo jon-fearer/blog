@@ -3,40 +3,37 @@
   font-size: 2em;
 }
 
-.pi-home {
-  margin-left: 10px;
-
-  @media only screen and (max-width: 500px) {
+.banner-container {
+  @media only screen and (max-width: 470px) {
     display: none;
   }
-}
-
-.banner-container {
-  overflow: hidden;
 }
 
 #nav-buttons {
   float: right;
   display: inline-flex;
-  margin-right: -200px;
+  justify-content: flex-end;
+  margin-right: -210px;
 
-  @media only screen and (max-width: 500px) {
-    display: none;
+  @media only screen and (max-width: 470px) {
+    margin-right: auto;
   }
 }
 
 .pi-search {
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 p-calendar {
   float: right;
-  width: 250px;
+  width: auto;
+  max-width: 250px;
 }
 
 app-tags {
   float: right;
-  width: 200px;
+  width: auto;
+  max-width: 200px;
 }
 
 .pi-bars-container {
@@ -45,7 +42,7 @@ app-tags {
   font-size: 1.5em;
   height: 60px;
   width: 60px;
-  background-color:white;
+  background-color: white;
   border-radius: 50%;
   margin-top: 10px;
   margin-right: 10px;
@@ -54,8 +51,8 @@ app-tags {
   -moz-box-shadow: 3px 3px 5px #ccc;
   box-shadow: 3px 3px 5px #ccc;
 
-  @media only screen and (max-width: 500px) {
-    display: inline-block;
+  @media only screen and (max-width: 470px) {
+    display: block;
   }
 }
 

@@ -17,7 +17,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   animations: [
     trigger('slide', [
       state('false', style({ transform: 'translateX(0)' })),
-      state('true', style({ transform: 'translateX(-200px)' })),
+      state('true', style({ transform: 'translateX(-210px)' })),
       transition('* => *', animate(200))
     ])
   ]

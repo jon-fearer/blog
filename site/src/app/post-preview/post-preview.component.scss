@@ -6,21 +6,19 @@ $primary-grey: #808080;
   margin-top: 60px;
   margin-left: auto;
   margin-right: auto;
-  max-width: 500px;
+  width: auto;
+  max-width: 470px;
 
-  @media only screen and (max-width: 500px) {
-    width: auto;
+  @media only screen and (max-width: 470px) {
     margin-top: 0px;
-    max-width: 470px;
   }
 }
 
 .post-title {
   color: $primary-grey;
   font-size: 24px;
-  white-space: nowrap;
 
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: 470px) {
     font-size: 32px;
   }
 }
@@ -31,7 +29,7 @@ $primary-grey: #808080;
   margin-top: 10px;
   display: block;
 
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: 470px) {
     display: none;
   }
 }
@@ -39,4 +37,8 @@ $primary-grey: #808080;
 img {
   width: auto;
   max-width: 470px;
+
+  @media only screen and (max-width: 470px) {
+    max-width: 95vw;
+  }
 }
