@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'site';
+
+  postSelected = false;
+
+  togglePost(postTitle: string) {
+    console.log(postTitle);
+    this.postSelected = !this.postSelected;
+  }
+
+  unselectPost() {
+    this.postSelected = false;
+  }
 }

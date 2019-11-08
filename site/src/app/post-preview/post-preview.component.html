@@ -1,5 +1,6 @@
 <div class="post-preview-container">
   <div class="post-summary"
+    (click)="postSelectEvent.emit(post.title)"
     *ngFor="let post of posts">
     <span class="post-title">{{ post.title }}</span>
     <span class="post-date">{{ post.postedOn }}</span>

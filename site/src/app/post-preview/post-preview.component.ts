@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-post-preview',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post-preview.component.scss']
 })
 export class PostPreviewComponent implements OnInit {
+  @Output() postSelectEvent = new EventEmitter();
+
   loremText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
     + 'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris '
@@ -41,6 +43,10 @@ export class PostPreviewComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  logTitle(title: string) {
+    console.log(title);
   }
 
 }

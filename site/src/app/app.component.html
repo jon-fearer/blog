@@ -1,2 +1,7 @@
-<app-nav-banner></app-nav-banner>
-<app-post-preview></app-post-preview>
+<app-nav-banner
+  (homeEvent)="unselectPost()">
+</app-nav-banner>
+<app-post-preview
+  *ngIf="!postSelected"
+  (postSelectEvent)="togglePost($event)"></app-post-preview>
+<app-post *ngIf="postSelected"></app-post>

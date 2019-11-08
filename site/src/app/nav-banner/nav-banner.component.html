@@ -1,5 +1,6 @@
 <div class="banner-container">
-  <i class="pi pi-home"></i>
+  <i class="pi pi-home"
+    (click)="homeEvent.emit()"></i>
   <div id="nav-buttons" [@slide]="searchActivated">
     <i class="pi pi-user"></i>
     <i class="pi pi-calendar"

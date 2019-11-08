@@ -1,8 +1,10 @@
 import {
   Component,
   ElementRef,
+  EventEmitter,
   Input,
   OnInit,
+  Output,
   ViewChild,
 } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
@@ -21,6 +23,8 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   ]
 })
 export class NavBannerComponent implements OnInit {
+  @Output() homeEvent = new EventEmitter();
+
   value: Date;
 
   showCalendar = false;
