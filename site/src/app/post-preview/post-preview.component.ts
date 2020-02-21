@@ -4,6 +4,10 @@ import {
   EventEmitter,
   OnInit,
 } from '@angular/core';
+import {
+  IPostPreview,
+  PostPreviewService,
+} from '../services/post-preview.service';
 
 
 @Component({
@@ -14,46 +18,40 @@ import {
 export class PostPreviewComponent implements OnInit {
   @Output() postSelectEvent = new EventEmitter();
 
-  loremText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, ' +
-    'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
-    ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris ' +
-    'nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in ' +
-    'reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla' +
-    'pariatur. Excepteur sint occaecat cupidatat non proident, sunt in ' +
-    'culpa qui officia deserunt mollit anim id est laborum.';
+  posts: {
+    title: string,
+    path: string,
+    postedOn: string,
+  }[];
 
-  posts: any[];
-
-  constructor() {
-    this.posts = [
-      {
-        title: 'Doing Stuff With Typescript',
-        img: '',
-        path: '',
-        text: this.loremText,
-        postedOn: new Date().toLocaleDateString(),
-      },
-      {
-        title: 'Doing Stuff With AWS',
-        img: '',
-        path: '',
-        text: this.loremText,
-        postedOn: new Date().toLocaleDateString(),
-      },
-      {
-        title: 'Doing Stuff With Postgres',
-        img: '',
-        path: '',
-        text: this.loremText,
-        postedOn: new Date().toLocaleDateString(),
-      },
-    ];
-  }
+  constructor(private postPreviewService: PostPreviewService) {}
 
   ngOnInit() {
+    this.getPosts();
   }
 
   logTitle(title: string) {
     console.log(title);
+  }
+
+  parsePostedOnDate(path: string) {
+    const pathArr = path.split('/').slice(-3);
+
+    return [
+      pathArr[1],
+      pathArr[2].split('.')[0],
+      pathArr[0],
+    ].join('/');
+  }
+
+  getPosts(): void {
+    this.postPreviewService.getPostPreviews()
+        .subscribe((posts: IPostPreview[]) => {
+          this.posts = posts.map((el) => ({
+            title: el.title,
+            path: el.path,
+            postedOn: this.parsePostedOnDate(el.path),
+          }));
+        });
   }
 }

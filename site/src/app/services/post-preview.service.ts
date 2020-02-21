@@ -9,9 +9,14 @@ import {environment} from '../../environments/environment';
 export class PostPreviewService {
   constructor(private http: HttpClient) { }
 
-  getPostMetadata() {
+  getPostPreviews() {
     const url = `https://${environment.contentHostname}/index.json`;
 
     return this.http.get(url);
   }
+}
+
+export interface IPostPreview {
+  title: string,
+  path: string,
 }
