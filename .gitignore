@@ -61,5 +61,6 @@ typings/
 .next
 
 .DS_Store
-
 dist/
+deploy-content.sh
+deploy-site.sh
