@@ -1,20 +1,21 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 
-import { AccordionModule } from 'primeng/accordion';
-import { NavBannerComponent } from './nav-banner/nav-banner.component';
-import { PostPreviewComponent } from './post-preview/post-preview.component';
-import { PostComponent } from './post/post.component';
-import { InputTextModule } from 'primeng/inputtext';
-import { CalendarModule } from 'primeng/calendar';
-import { TagsComponent } from './nav-banner/tags/tags.component';
-import { ButtonModule } from 'primeng/button';
-import { BioComponent } from './bio/bio.component';
+import {AccordionModule} from 'primeng/accordion';
+import {NavBannerComponent} from './nav-banner/nav-banner.component';
+import {PostPreviewComponent} from './post-preview/post-preview.component';
+import {PostComponent} from './post/post.component';
+import {InputTextModule} from 'primeng/inputtext';
+import {CalendarModule} from 'primeng/calendar';
+import {TagsComponent} from './nav-banner/tags/tags.component';
+import {ButtonModule} from 'primeng/button';
+import {BioComponent} from './bio/bio.component';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { BioComponent } from './bio/bio.component';
     PostPreviewComponent,
     PostComponent,
     TagsComponent,
-    BioComponent
+    BioComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,8 +36,9 @@ import { BioComponent } from './bio/bio.component';
     InputTextModule,
     CalendarModule,
     ButtonModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
