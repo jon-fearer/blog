@@ -11,8 +11,11 @@ export class AppComponent {
 
   postSelected = false;
 
-  togglePost(postTitle: string) {
-    console.log(postTitle);
+  path: string;
+
+  togglePost(postPath: string) {
+    console.log(postPath);
+    this.path = postPath;
     this.postSelected = !this.postSelected;
   }
 

@@ -34,7 +34,7 @@ export class PostPreviewComponent implements OnInit {
     console.log(title);
   }
 
-  parsePostedOnDate(path: string) {
+  static parsePostedOnDate(path: string) {
     const pathArr = path.split('/').slice(-3);
 
     return [
@@ -45,12 +45,13 @@ export class PostPreviewComponent implements OnInit {
   }
 
   getPosts(): void {
-    this.postPreviewService.getPostPreviews()
+    this.postPreviewService
+        .getPostPreviews()
         .subscribe((posts: IPostPreview[]) => {
           this.posts = posts.map((el) => ({
             title: el.title,
             path: el.path,
-            postedOn: this.parsePostedOnDate(el.path),
+            postedOn: PostPreviewComponent.parsePostedOnDate(el.path),
           }));
         });
   }

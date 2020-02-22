@@ -3,5 +3,9 @@
 </app-nav-banner>
 <app-post-preview
   *ngIf="!postSelected"
-  (postSelectEvent)="togglePost($event)"></app-post-preview>
-<app-post *ngIf="postSelected"></app-post>
+  (postSelectEvent)="togglePost($event)"
+></app-post-preview>
+<app-post
+  *ngIf="postSelected"
+  [path]="path"
+></app-post>
