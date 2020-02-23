@@ -10,7 +10,7 @@ export class PostPreviewService {
   constructor(private http: HttpClient) { }
 
   getPostPreviews() {
-    const url = `https://${environment.contentHostname}/index.json`;
+    const url = `${environment.contentBasePath}/index.json`;
 
     return this.http.get(url);
   }

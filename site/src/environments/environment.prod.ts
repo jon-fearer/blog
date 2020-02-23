@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  contentBasePath: 'https://jon-fearer-blog-content.s3.amazonaws.com',
 };

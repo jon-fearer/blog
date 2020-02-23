@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  contentHostname: 'jon-fearer-blog-content.s3.amazonaws.com',
+  contentBasePath: 'assets/content',
 };
 
 /*

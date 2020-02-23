@@ -9,7 +9,7 @@ export class PostContentService {
   constructor(private http: HttpClient) { }
 
   getPostContent(path: string) {
-    const url = `https://${environment.contentHostname}/${path}`;
+    const url = `${environment.contentBasePath}/${path}`;
 
     return this.http.get(url, {responseType: 'text'});
   }

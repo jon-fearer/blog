@@ -64,3 +64,4 @@ typings/
 dist/
 deploy-content.sh
 deploy-site.sh
+site/src/assets/content/
