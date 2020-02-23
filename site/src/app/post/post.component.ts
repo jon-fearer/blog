@@ -3,6 +3,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
+import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {PostContentService} from '../services/post-content.service';
 
 @Component({
@@ -13,9 +14,10 @@ import {PostContentService} from '../services/post-content.service';
 export class PostComponent implements OnInit {
   @Input() path: string;
 
-  content: string;
+  content: SafeHtml;
 
-  constructor(private postContentService: PostContentService) { }
+  constructor(private postContentService: PostContentService,
+    private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.getPostContent();
@@ -24,6 +26,8 @@ export class PostComponent implements OnInit {
   getPostContent() {
     this.postContentService
         .getPostContent(this.path)
-        .subscribe((content: string) => this.content = content);
+        .subscribe((content: string) => {
+          this.content = this.sanitizer.bypassSecurityTrustHtml(content);
+        });
   }
 }
