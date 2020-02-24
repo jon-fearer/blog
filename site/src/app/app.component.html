@@ -1,11 +1,15 @@
 <app-nav-banner
-  (homeEvent)="unselectPost()">
+  (homeEvent)="unselectPost()"
+  (bioEvent)="currentComponent = 'bio'">
 </app-nav-banner>
 <app-post-preview
-  *ngIf="!postSelected"
-  (postSelectEvent)="togglePost($event)"
-></app-post-preview>
+  *ngIf="currentComponent === 'postPreview'"
+  (postSelectEvent)="togglePost($event)">
+</app-post-preview>
 <app-post
-  *ngIf="postSelected"
-  [path]="path"
-></app-post>
+  *ngIf="currentComponent === 'post'"
+  [path]="postPath">
+</app-post>
+<app-bio
+  *ngIf="currentComponent === 'bio'">
+</app-bio>

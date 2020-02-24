@@ -9,17 +9,20 @@ import {Component} from '@angular/core';
 export class AppComponent {
   title = 'site';
 
-  postSelected = false;
+  currentComponent:
+    'postPreview'
+    | 'post'
+    | 'bio' = 'postPreview';
 
-  path: string;
+  postPath: string;
 
   togglePost(postPath: string) {
-    console.log(postPath);
-    this.path = postPath;
-    this.postSelected = !this.postSelected;
+    this.postPath = postPath;
+
+    this.currentComponent = 'post';
   }
 
   unselectPost() {
-    this.postSelected = false;
+    this.currentComponent = 'postPreview';
   }
 }

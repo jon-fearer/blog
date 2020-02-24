@@ -7,7 +7,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 
 @Component({
@@ -16,14 +16,16 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   styleUrls: ['./nav-banner.component.scss'],
   animations: [
     trigger('slide', [
-      state('false', style({ transform: 'translateX(0)' })),
-      state('true', style({ transform: 'translateX(-210px)' })),
-      transition('* => *', animate(200))
-    ])
-  ]
+      state('false', style({transform: 'translateX(0)'})),
+      state('true', style({transform: 'translateX(-210px)'})),
+      transition('* => *', animate(200)),
+    ]),
+  ],
 })
 export class NavBannerComponent implements OnInit {
   @Output() homeEvent = new EventEmitter();
+
+  @Output() bioEvent = new EventEmitter();
 
   value: Date;
 
@@ -31,12 +33,13 @@ export class NavBannerComponent implements OnInit {
 
   showTags = false;
 
-  yearRange = `2019:${new Date().getFullYear()}`;
+  yearRange = `2020:${new Date().getFullYear()}`;
 
   constructor() { }
 
   @Input() searchActivated = 'false';
-  @ViewChild('search', { static: false }) searchField: ElementRef;
+
+  @ViewChild('search', {static: false}) searchField: ElementRef;
 
   ngOnInit() {
   }
@@ -54,9 +57,9 @@ export class NavBannerComponent implements OnInit {
 
     if ('toElement' in event) {
       if ('className' in event.toElement) {
-        if (!event.toElement.className.includes('monthpicker')
-            && !event.toElement.className.includes('datepicker')
-            && !event.toElement.className.includes('pi-calendar')) {
+        if (!event.toElement.className.includes('monthpicker') &&
+            !event.toElement.className.includes('datepicker') &&
+            !event.toElement.className.includes('pi-calendar')) {
           this.showCalendar = !this.showCalendar;
 
           return;
@@ -93,9 +96,9 @@ export class NavBannerComponent implements OnInit {
 
     if ('toElement' in event) {
       if ('className' in event.toElement) {
-        if (event.toElement.className !== 'ui-button-text ui-clickable'
-            && event.toElement.className !== 'tag-container'
-            && event.toElement.className !== 'pi pi-tags') {
+        if (event.toElement.className !== 'ui-button-text ui-clickable' &&
+            event.toElement.className !== 'tag-container' &&
+            event.toElement.className !== 'pi pi-tags') {
           this.showTags = !this.showTags;
 
           return;
@@ -104,4 +107,5 @@ export class NavBannerComponent implements OnInit {
     }
   }
 
+  showBio() {}
 }
