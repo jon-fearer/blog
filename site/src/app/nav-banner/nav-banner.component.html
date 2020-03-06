@@ -28,7 +28,7 @@
   [yearNavigator]="true"
   [yearRange]="yearRange"
   (window:mouseup)="toggleCalendar($event)"
-  (onSelect)="filterPosts(value)"
+  (onSelect)="filterPostsByMonth.emit($event)"
   *ngIf="showCalendar">
 </p-calendar>
 <app-tags

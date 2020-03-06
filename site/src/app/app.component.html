@@ -1,10 +1,12 @@
 <app-nav-banner
-  (homeEvent)="unselectPost()"
-  (bioEvent)="currentComponent = 'bio'">
+  (homeEvent)="unselectPost(); filterPostsByMonth()"
+  (bioEvent)="currentComponent = 'bio'"
+  (filterPostsByMonth)="filterPostsByMonth($event)">
 </app-nav-banner>
 <app-post-preview
   *ngIf="currentComponent === 'postPreview'"
-  (postSelectEvent)="togglePost($event)">
+  (postSelectEvent)="togglePost($event)"
+  [filterDate]="filterDate">
 </app-post-preview>
 <app-post
   *ngIf="currentComponent === 'post'"

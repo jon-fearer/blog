@@ -7,6 +7,8 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  filterDate: Date;
+
   title = 'site';
 
   currentComponent:
@@ -24,5 +26,9 @@ export class AppComponent {
 
   unselectPost() {
     this.currentComponent = 'postPreview';
+  }
+
+  filterPostsByMonth(event: Date) {
+    this.filterDate = event;
   }
 }

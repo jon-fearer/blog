@@ -27,6 +27,8 @@ export class NavBannerComponent implements OnInit {
 
   @Output() bioEvent = new EventEmitter();
 
+  @Output() filterPostsByMonth = new EventEmitter();
+
   value: Date;
 
   showCalendar = false;
@@ -106,6 +108,4 @@ export class NavBannerComponent implements OnInit {
       }
     }
   }
-
-  showBio() {}
 }

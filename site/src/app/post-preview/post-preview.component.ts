@@ -1,7 +1,9 @@
 import {
   Component,
+  Input,
   Output,
   EventEmitter,
+  OnChanges,
   OnInit,
 } from '@angular/core';
 import {
@@ -15,14 +17,22 @@ import {
   templateUrl: './post-preview.component.html',
   styleUrls: ['./post-preview.component.scss'],
 })
-export class PostPreviewComponent implements OnInit {
+export class PostPreviewComponent implements OnInit, OnChanges {
   @Output() postSelectEvent = new EventEmitter();
+
+  @Input() filterDate: Date;
 
   posts: {
     title: string,
     path: string,
     postedOn: string,
-  }[];
+  }[] = [];
+
+  filteredPosts: {
+    title: string,
+    path: string,
+    postedOn: string,
+  }[] = [];
 
   constructor(private postPreviewService: PostPreviewService) {}
 
@@ -30,8 +40,31 @@ export class PostPreviewComponent implements OnInit {
     this.getPosts();
   }
 
+  ngOnChanges() {
+    this.filterPosts();
+  }
+
   logTitle(title: string) {
     console.log(title);
+  }
+
+  filterPosts() {
+    if (!this.filterDate) {
+      this.filteredPosts = this.posts;
+
+      return;
+    }
+
+    this.filteredPosts = this.posts.filter((p) => {
+      const postDate = new Date(p.postedOn);
+
+      if (postDate.getMonth() === this.filterDate.getMonth() &&
+          postDate.getFullYear() === this.filterDate.getFullYear()) {
+        return true;
+      }
+
+      return false;
+    });
   }
 
   static parsePostedOnDate(path: string) {
@@ -53,6 +86,8 @@ export class PostPreviewComponent implements OnInit {
             path: el.path,
             postedOn: PostPreviewComponent.parsePostedOnDate(el.path),
           }));
+
+          this.filteredPosts = this.posts;
         });
   }
 }
