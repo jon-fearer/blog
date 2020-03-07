@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "cp -r ../content/ ./src/assets/content/; ng serve",
+    "start:o": "cp -r ../content/ ./src/assets/content/; ng serve --open",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
