@@ -6,10 +6,11 @@ import {
   OnChanges,
   OnInit,
 } from '@angular/core';
+import { Logger } from '../services/logger/logger.service';
 import {
   IPostPreview,
   PostPreviewService,
-} from '../services/post-preview.service';
+} from '../services/post-content/post-preview.service';
 
 
 @Component({
@@ -34,7 +35,8 @@ export class PostPreviewComponent implements OnInit, OnChanges {
     postedOn: string,
   }[] = [];
 
-  constructor(private postPreviewService: PostPreviewService) {}
+  constructor(private postPreviewService: PostPreviewService,
+    private logger: Logger) {}
 
   ngOnInit() {
     this.getPosts();
@@ -78,9 +80,13 @@ export class PostPreviewComponent implements OnInit, OnChanges {
   }
 
   getPosts(): void {
+    this.logger.log('getting posts');
+
     this.postPreviewService
         .getPostPreviews()
         .subscribe((posts: IPostPreview[]) => {
+          this.logger.log('received posts');
+
           this.posts = posts.map((el) => ({
             title: el.title,
             path: el.path,

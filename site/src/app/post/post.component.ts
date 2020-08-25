@@ -4,7 +4,7 @@ import {
   OnInit,
 } from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
-import {PostContentService} from '../services/post-content.service';
+import {PostContentService} from '../services/post-content/post-content.service';
 
 @Component({
   selector: 'app-post',
