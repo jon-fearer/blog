@@ -22,6 +22,8 @@ module.exports = {
     'require-jsdoc': 'off',
     'new-cap': 'off',
     'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': 'error'
+    '@typescript-eslint/no-unused-vars': 'error',
+    'max-len': ['error', { 'code': 120 }],
+    'object-curly-spacing': [ 'error', 'always' ],
   },
 };
