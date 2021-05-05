@@ -67,3 +67,4 @@ deploy-site.sh
 site/src/assets/content/
 *.icloud
 *.ai
+site/.idea
