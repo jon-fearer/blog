@@ -68,3 +68,4 @@ site/src/assets/content/
 *.icloud
 *.ai
 site/.idea
+.idea

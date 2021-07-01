@@ -6,7 +6,7 @@ import {
   OnChanges,
   OnInit,
 } from '@angular/core';
-import { Logger } from '../services/logger/logger.service';
+import { Logger } from '../services/logger/logger';
 import {
   IPostPreview,
   PostPreviewService,
