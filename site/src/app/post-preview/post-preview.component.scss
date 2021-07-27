@@ -21,6 +21,10 @@ $primary-grey: #808080;
   }
 }
 
+.post-summary {
+  margin-top: 30px;
+}
+
 .post-title {
   color: $primary-grey;
   font-size: 24px;
@@ -39,6 +43,11 @@ $primary-grey: #808080;
   @media only screen and (max-width: 470px) {
     display: none;
   }
+}
+
+.post-preview-image {
+  margin-top: 10px;
+  margin-bottom: 40px;
 }
 
 img {

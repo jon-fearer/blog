@@ -1,14 +1,14 @@
 [
   {
-    "title": "Welcome to My (Incomplete) Personal Blog",
-    "path": "posts/2021/07/27.html",
-    "tags": []
-  },
-  {
     "title": "I Co-wrote a Blog Post for AWS",
     "path": "posts/2021/07/28.html",
     "tags": [
       "aws"
     ]
+  },
+  {
+    "title": "Welcome to My (Incomplete) Personal Blog",
+    "path": "posts/2021/07/27.html",
+    "tags": []
   }
 ]
