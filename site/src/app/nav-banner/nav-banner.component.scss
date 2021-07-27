@@ -20,6 +20,11 @@
   }
 }
 
+.nav-button {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
 .pi-search {
   margin-right: 10px;
 }
@@ -38,29 +43,4 @@ app-tags {
   float: right;
   width: auto;
   max-width: 200px;
-}
-
-.pi-bars-container {
-  float: right;
-  display: none;
-  font-size: 1.5em;
-  height: 60px;
-  width: 60px;
-  background-color: white;
-  border-radius: 50%;
-  margin-top: 10px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  -webkit-box-shadow: 3px 3px 5px #ccc;
-  -moz-box-shadow: 3px 3px 5px #ccc;
-  box-shadow: 3px 3px 5px #ccc;
-
-  @media only screen and (max-width: 470px) {
-    display: block;
-  }
-}
-
-.pi-bars {
-  margin-top: 5px;
-  margin-left: 6px;
 }

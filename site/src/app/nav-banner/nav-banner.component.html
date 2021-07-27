@@ -1,37 +1,36 @@
 <div class="banner-container">
   <i class="pi pi-home"
-    (click)="homeEvent.emit()"></i>
+     (click)="homeEvent.emit()"></i>
   <div id="nav-buttons" [@slide]="searchActivated">
-    <i class="pi pi-user"
+    <i class="nav-button pi pi-user"
        (click)="bioEvent.emit()"></i>
-    <i class="pi pi-calendar"
+    <i class="nav-button pi pi-calendar"
        (click)="toggleCalendar('icon-click')"></i>
-    <i class="pi pi-tags"
+    <i class="nav-button pi pi-tags"
        (click)="toggleTags('icon-click')"></i>
-    <i class="pi pi-search"
+    <i class="nav-button pi pi-search"
        (click)="toggleSearch()"></i>
     <input id="search-input"
-      type="text"
-      placeholder="Search"
-      #search
-      (focusout)="toggleSearch()"
-      pInputText>
+           type="text"
+           placeholder="Search"
+           #search
+           (focusout)="toggleSearch()"
+           pInputText>
   </div>
 </div>
-<div class="pi-bars-container">
-  <i class="pi pi-bars"></i>
+<div>
+  <p-calendar
+    [(ngModel)]="value"
+    [inline]="true"
+    view="month"
+    [yearNavigator]="true"
+    [yearRange]="yearRange"
+    (window:mouseup)="toggleCalendar($event)"
+    (onSelect)="filterPostsByMonth.emit($event)"
+    *ngIf="showCalendar">
+  </p-calendar>
+  <app-tags
+    (window:mouseup)="toggleTags($event)"
+    *ngIf="showTags">
+  </app-tags>
 </div>
-<p-calendar
-  [(ngModel)]="value"
-  [inline]="true"
-  view="month"
-  [yearNavigator]="true"
-  [yearRange]="yearRange"
-  (window:mouseup)="toggleCalendar($event)"
-  (onSelect)="filterPostsByMonth.emit($event)"
-  *ngIf="showCalendar">
-</p-calendar>
-<app-tags
-  (window:mouseup)="toggleTags($event)"
-  *ngIf="showTags">
-</app-tags>
