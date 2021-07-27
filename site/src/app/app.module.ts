@@ -13,7 +13,9 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
 import { TagsComponent } from './nav-banner/tags/tags.component';
 import { ButtonModule } from 'primeng/button';
+import { MessagesModule } from 'primeng/messages';
 import { BioComponent } from './bio/bio.component';
+import { WarningComponent } from './warning/warning.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { BioComponent } from './bio/bio.component';
     PostComponent,
     TagsComponent,
     BioComponent,
+    WarningComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,7 @@ import { BioComponent } from './bio/bio.component';
     InputTextModule,
     CalendarModule,
     ButtonModule,
+    MessagesModule,
     HttpClientModule,
   ],
   providers: [],
