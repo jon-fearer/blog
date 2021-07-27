@@ -1,7 +1,8 @@
 [
   {
-    "title": "I Co-wrote a Blog Post for AWS",
+    "title": "I Coauthored a Blog Post for AWS",
     "path": "posts/2021/07/28.html",
+    "image": "posts/2021/07/28.jpeg",
     "tags": [
       "aws"
     ]
@@ -9,6 +10,7 @@
   {
     "title": "Welcome to My (Incomplete) Personal Blog",
     "path": "posts/2021/07/27.html",
+    "image": "posts/2021/07/27.png",
     "tags": []
   }
 ]

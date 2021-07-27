@@ -1,9 +1,11 @@
 <div class="post-preview-container">
   <div class="post-summary"
-    (click)="postSelectEvent.emit(post.path)"
-    *ngFor="let post of filteredPosts">
+       (click)="postSelectEvent.emit(post.path)"
+       *ngFor="let post of filteredPosts">
     <span class="post-title">{{ post.title }}</span>
     <span class="post-date">{{ post.postedOn }}</span>
-    <img class="post-preview-image" src="assets/aws-blog.jpeg">
+    <div class="post-preview-image-container">
+      <img class="post-preview-image" src="{{ post.imagePath }}" alt="{{ post.title }}">
+    </div>
   </div>
 </div>

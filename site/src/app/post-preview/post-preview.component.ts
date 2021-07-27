@@ -7,11 +7,9 @@ import {
   OnInit,
 } from '@angular/core';
 import { Logger } from '../services/logger/logger';
-import {
-  IPostPreview,
-  PostPreviewService,
-} from '../services/post-content/post-preview.service';
-
+import { PostPreviewService } from '../services/post-content/post-preview.service';
+import { IPost, IPostPreview } from '../shared/interfaces';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-post-preview',
@@ -20,20 +18,10 @@ import {
 })
 export class PostPreviewComponent implements OnInit, OnChanges {
   @Output() postSelectEvent = new EventEmitter();
-
   @Input() filterDate: Date;
 
-  posts: {
-    title: string,
-    path: string,
-    postedOn: string,
-  }[] = [];
-
-  filteredPosts: {
-    title: string,
-    path: string,
-    postedOn: string,
-  }[] = [];
+  posts: IPost[] = [];
+  filteredPosts: IPost[] = [];
 
   constructor(private postPreviewService: PostPreviewService,
     private logger: Logger) {}
@@ -46,26 +34,16 @@ export class PostPreviewComponent implements OnInit, OnChanges {
     this.filterPosts();
   }
 
-  logTitle(title: string) {
-    console.log(title);
-  }
-
   filterPosts() {
     if (!this.filterDate) {
       this.filteredPosts = this.posts;
-
       return;
     }
 
     this.filteredPosts = this.posts.filter((p) => {
       const postDate = new Date(p.postedOn);
-
-      if (postDate.getMonth() === this.filterDate.getMonth() &&
-          postDate.getFullYear() === this.filterDate.getFullYear()) {
-        return true;
-      }
-
-      return false;
+      return postDate.getMonth() === this.filterDate.getMonth() &&
+        postDate.getFullYear() === this.filterDate.getFullYear();
     });
   }
 
@@ -81,18 +59,16 @@ export class PostPreviewComponent implements OnInit, OnChanges {
 
   getPosts(): void {
     this.logger.log('getting posts');
-
     this.postPreviewService
         .getPostPreviews()
         .subscribe((posts: IPostPreview[]) => {
           this.logger.log('received posts');
-
           this.posts = posts.map((el) => ({
             title: el.title,
             path: el.path,
             postedOn: PostPreviewComponent.parsePostedOnDate(el.path),
+            imagePath: `${environment.contentBasePath}/${el.image}`,
           }));
-
           this.filteredPosts = this.posts;
         });
   }
