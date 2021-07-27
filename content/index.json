@@ -1,21 +1,12 @@
 [
   {
-    "title": "Doing Stuff With Typescript",
-    "path": "posts/2020/02/20.html",
-    "tags": [
-      "typescript"
-    ]
+    "title": "Welcome to My (Incomplete) Personal Blog",
+    "path": "posts/2021/07/27.html",
+    "tags": []
   },
   {
-    "title": "Doing Stuff With AWS",
-    "path": "posts/2020/03/20.html",
-    "tags": [
-      "aws"
-    ]
-  },
-  {
-    "title": "Doing Stuff With AWS",
-    "path": "posts/2020/04/20.html",
+    "title": "I Co-wrote a Blog Post for AWS",
+    "path": "posts/2021/07/28.html",
     "tags": [
       "aws"
     ]

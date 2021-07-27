@@ -7,7 +7,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 
 @Component({
@@ -16,8 +16,8 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   styleUrls: ['./nav-banner.component.scss'],
   animations: [
     trigger('slide', [
-      state('false', style({transform: 'translateX(0)'})),
-      state('true', style({transform: 'translateX(-210px)'})),
+      state('false', style({ transform: 'translateX(0)' })),
+      state('true', style({ transform: 'translateX(-210px)' })),
       transition('* => *', animate(200)),
     ]),
   ],
@@ -35,13 +35,13 @@ export class NavBannerComponent implements OnInit {
 
   showTags = false;
 
-  yearRange = `2020:${new Date().getFullYear()}`;
+  yearRange = `2021:${new Date().getFullYear()}`;
 
   constructor() { }
 
   @Input() searchActivated = 'false';
 
-  @ViewChild('search', {static: false}) searchField: ElementRef;
+  @ViewChild('search', { static: false }) searchField: ElementRef;
 
   ngOnInit() {
   }
@@ -53,7 +53,6 @@ export class NavBannerComponent implements OnInit {
 
     if (event === 'icon-click') {
       this.showCalendar = !this.showCalendar;
-
       return;
     }
 
@@ -63,7 +62,6 @@ export class NavBannerComponent implements OnInit {
             !event.toElement.className.includes('datepicker') &&
             !event.toElement.className.includes('pi-calendar')) {
           this.showCalendar = !this.showCalendar;
-
           return;
         }
       }
