@@ -47,16 +47,6 @@ export class PostPreviewComponent implements OnInit, OnChanges {
     });
   }
 
-  static parsePostedOnDate(path: string) {
-    const pathArr = path.split('/').slice(-3);
-
-    return [
-      pathArr[1],
-      pathArr[2].split('.')[0],
-      pathArr[0],
-    ].join('/');
-  }
-
   getPosts(): void {
     this.logger.log('getting posts');
     this.postPreviewService
@@ -66,7 +56,7 @@ export class PostPreviewComponent implements OnInit, OnChanges {
           this.posts = posts.map((el) => ({
             title: el.title,
             path: el.path,
-            postedOn: PostPreviewComponent.parsePostedOnDate(el.path),
+            postedOn: el.postedOn,
             imagePath: `${environment.contentBasePath}/${el.image}`,
           }));
           this.filteredPosts = this.posts;

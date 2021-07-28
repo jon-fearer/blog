@@ -1,16 +1,16 @@
 [
   {
     "title": "I Coauthored a Blog Post for AWS",
-    "path": "posts/2021/07/28.html",
-    "image": "posts/2021/07/28.jpeg",
-    "tags": [
-      "aws"
-    ]
+    "path": "posts/2021/07/aws-blog-post.html",
+    "image": "posts/2021/07/aws-blog-post.jpeg",
+    "postedOn": "2021-07-28",
+    "tags": ["aws"]
   },
   {
     "title": "Welcome to My (Incomplete) Personal Blog",
-    "path": "posts/2021/07/27.html",
-    "image": "posts/2021/07/27.png",
+    "path": "posts/2021/07/welcome.html",
+    "image": "posts/2021/07/welcome.png",
+    "postedOn": "2021-07-28",
     "tags": []
   }
 ]
