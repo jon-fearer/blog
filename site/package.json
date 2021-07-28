@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "cp -r ../content/ ./src/assets/content/; ng serve --open",
-    "build": "ng build",
+    "build": "cp -r ../content/ ./src/assets/content/; ng build",
     "test": "jest",
     "lint": "ng lint",
     "e2e": "ng e2e"

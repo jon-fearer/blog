@@ -77,12 +77,6 @@ export class NavBannerComponent implements OnInit {
     }
   }
 
-  filterPosts(value: Date) {
-    console.log(value);
-
-    setTimeout(() => this.showCalendar = false, 100);
-  }
-
   toggleTags(event: any) {
     if (!event) {
       return;

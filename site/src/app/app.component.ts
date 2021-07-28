@@ -1,5 +1,4 @@
-import {Component} from '@angular/core';
-
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,19 +7,12 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   filterDate: Date;
-
   title = 'site';
-
-  currentComponent:
-    'postPreview'
-    | 'post'
-    | 'bio' = 'postPreview';
-
+  currentComponent: 'postPreview' | 'post' | 'bio' = 'postPreview';
   postPath: string;
 
   togglePost(postPath: string) {
     this.postPath = postPath;
-
     this.currentComponent = 'post';
   }
 
@@ -28,7 +20,7 @@ export class AppComponent {
     this.currentComponent = 'postPreview';
   }
 
-  filterPostsByMonth(event: Date) {
+  filterPostsByMonth(event?: Date) {
     this.filterDate = event;
   }
 }
