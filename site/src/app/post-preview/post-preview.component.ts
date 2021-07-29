@@ -1,11 +1,4 @@
-import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
-  OnChanges,
-  OnInit,
-} from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, OnInit } from '@angular/core';
 import { Logger } from '../services/logger/logger';
 import { PostPreviewService } from '../services/post-content/post-preview.service';
 import { IPost, IPostPreview } from '../shared/interfaces';
@@ -59,7 +52,7 @@ export class PostPreviewComponent implements OnInit, OnChanges {
             postedOn: el.postedOn,
             imagePath: `${environment.contentBasePath}/${el.image}`,
           }));
-          this.filteredPosts = this.posts;
+          this.filterPosts();
         });
   }
 }

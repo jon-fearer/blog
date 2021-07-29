@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   filterDate: Date;
   title = 'site';
-  currentComponent: 'postPreview' | 'post' | 'bio' = 'postPreview';
+  currentComponent: 'postPreview'|'post'|'bio' = 'postPreview';
   postPath: string;
 
   togglePost(postPath: string) {
@@ -22,5 +22,6 @@ export class AppComponent {
 
   filterPostsByMonth(event?: Date) {
     this.filterDate = event;
+    this.currentComponent = 'postPreview';
   }
 }

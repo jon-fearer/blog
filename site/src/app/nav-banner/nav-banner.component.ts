@@ -1,14 +1,5 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-
 
 @Component({
   selector: 'app-nav-banner',
@@ -22,31 +13,19 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
     ]),
   ],
 })
-export class NavBannerComponent implements OnInit {
+export class NavBannerComponent {
   @Output() homeEvent = new EventEmitter();
-
   @Output() bioEvent = new EventEmitter();
-
   @Output() filterPostsByMonth = new EventEmitter();
-
-  value: Date;
-
-  showCalendar = false;
-
-  showTags = false;
-
-  yearRange = `2021:${new Date().getFullYear()}`;
-
-  constructor() { }
-
   @Input() searchActivated = 'false';
-
   @ViewChild('search', { static: false }) searchField: ElementRef;
 
-  ngOnInit() {
-  }
+  value: Date;
+  showCalendar = false;
+  showTags = false;
+  yearRange = `2021:${new Date().getFullYear()}`;
 
-  toggleCalendar(event: any) {
+  toggleCalendar(event?: any) {
     if (!event) {
       return;
     }
@@ -77,14 +56,13 @@ export class NavBannerComponent implements OnInit {
     }
   }
 
-  toggleTags(event: any) {
+  toggleTags(event?: any) {
     if (!event) {
       return;
     }
 
     if (event === 'icon-click') {
       this.showTags = !this.showTags;
-
       return;
     }
 
@@ -94,7 +72,6 @@ export class NavBannerComponent implements OnInit {
             event.toElement.className !== 'tag-container' &&
             event.toElement.className !== 'pi pi-tags') {
           this.showTags = !this.showTags;
-
           return;
         }
       }

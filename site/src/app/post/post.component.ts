@@ -1,10 +1,6 @@
-import {
-  Component,
-  Input,
-  OnInit,
-} from '@angular/core';
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
-import {PostContentService} from '../services/post-content/post-content.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { PostContentService } from '../services/post-content/post-content.service';
 
 @Component({
   selector: 'app-post',
@@ -13,11 +9,9 @@ import {PostContentService} from '../services/post-content/post-content.service'
 })
 export class PostComponent implements OnInit {
   @Input() path: string;
-
   content: SafeHtml;
 
-  constructor(private postContentService: PostContentService,
-    private sanitizer: DomSanitizer) { }
+  constructor(private postContentService: PostContentService, private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
     this.getPostContent();

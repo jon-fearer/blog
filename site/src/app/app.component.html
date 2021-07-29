@@ -8,11 +8,6 @@
   (postSelectEvent)="togglePost($event)"
   [filterDate]="filterDate">
 </app-post-preview>
-<app-post
-  *ngIf="currentComponent === 'post'"
-  [path]="postPath">
-</app-post>
-<app-bio
-  *ngIf="currentComponent === 'bio'">
-</app-bio>
+<app-post *ngIf="currentComponent === 'post'" [path]="postPath"></app-post>
+<app-bio *ngIf="currentComponent === 'bio'"></app-bio>
 <app-warning></app-warning>
