@@ -17,6 +17,7 @@ export class NavBannerComponent {
   @Output() homeEvent = new EventEmitter();
   @Output() bioEvent = new EventEmitter();
   @Output() filterPostsByMonth = new EventEmitter();
+  @Output() filterPostsByTag = new EventEmitter();
   @Input() searchActivated = 'false';
   @ViewChild('search', { static: false }) searchField: ElementRef;
 

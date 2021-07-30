@@ -12,12 +12,12 @@ import { environment } from '../../environments/environment';
 export class PostPreviewComponent implements OnInit, OnChanges {
   @Output() postSelectEvent = new EventEmitter();
   @Input() filterDate: Date;
+  @Input() filterTag: string;
 
   posts: IPost[] = [];
   filteredPosts: IPost[] = [];
 
-  constructor(private postPreviewService: PostPreviewService,
-    private logger: Logger) {}
+  constructor(private postPreviewService: PostPreviewService, private logger: Logger) {}
 
   ngOnInit() {
     this.getPosts();
@@ -28,16 +28,18 @@ export class PostPreviewComponent implements OnInit, OnChanges {
   }
 
   filterPosts() {
-    if (!this.filterDate) {
-      this.filteredPosts = this.posts;
-      return;
+    let filteredPosts: IPost[] = this.posts;
+    if (this.filterDate) {
+      filteredPosts = filteredPosts.filter((p) => {
+        const postDate = new Date(p.postedOn);
+        return postDate.getMonth() === this.filterDate.getMonth() &&
+          postDate.getFullYear() === this.filterDate.getFullYear();
+      });
     }
-
-    this.filteredPosts = this.posts.filter((p) => {
-      const postDate = new Date(p.postedOn);
-      return postDate.getMonth() === this.filterDate.getMonth() &&
-        postDate.getFullYear() === this.filterDate.getFullYear();
-    });
+    if (this.filterTag) {
+      filteredPosts = filteredPosts.filter((p: IPost) => p.tags.includes(this.filterTag));
+    }
+    this.filteredPosts = filteredPosts;
   }
 
   getPosts(): void {
@@ -51,6 +53,7 @@ export class PostPreviewComponent implements OnInit, OnChanges {
             path: el.path,
             postedOn: el.postedOn,
             imagePath: `${environment.contentBasePath}/${el.image}`,
+            tags: el.tags,
           }));
           this.filterPosts();
         });

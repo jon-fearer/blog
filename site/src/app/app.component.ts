@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   filterDate: Date;
+  filterTag: string;
   title = 'site';
   currentComponent: 'postPreview'|'post'|'bio' = 'postPreview';
   postPath: string;
@@ -22,6 +23,13 @@ export class AppComponent {
 
   filterPostsByMonth(event?: Date) {
     this.filterDate = event;
+    this.filterTag = undefined;
+    this.currentComponent = 'postPreview';
+  }
+
+  filterPostsByTag(event?: string) {
+    this.filterTag = event;
+    this.filterDate = undefined;
     this.currentComponent = 'postPreview';
   }
 }

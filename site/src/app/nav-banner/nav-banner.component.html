@@ -34,6 +34,7 @@
   </p-calendar>
   <app-tags
     (window:mouseup)="toggleTags($event)"
+    (tagSelectedEvent)="filterPostsByTag.emit($event)"
     *ngIf="showTags">
   </app-tags>
 </div>

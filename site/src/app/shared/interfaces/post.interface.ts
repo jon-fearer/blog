@@ -3,4 +3,5 @@ export interface IPost {
   path: string,
   postedOn: string,
   imagePath: string,
+  tags: string[],
 }
