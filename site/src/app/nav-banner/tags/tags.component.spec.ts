@@ -4,6 +4,7 @@ import { PostPreviewService } from '../../services/post-content/post-preview.ser
 import { Logger } from '../../services/logger/logger';
 import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ButtonModule } from 'primeng/button';
 
 describe('TagsComponent', () => {
   let component: TagsComponent;
@@ -11,7 +12,7 @@ describe('TagsComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule],
+      imports: [HttpClientModule, ButtonModule],
       declarations: [TagsComponent],
       providers: [Logger, PostPreviewService],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
