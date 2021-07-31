@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "cp -r ../content/ ./src/assets/content/; ng serve --open",
-    "build": "cp -r ../content/ ./src/assets/content/; ng build --output-path dist",
+    "build": "cp -r ../content/ ./src/assets/content/; ng build --progress false --configuration production --output-path dist",
     "test": "jest",
     "lint": "eslint -c .eslintrc.js --max-warnings 1 \"src/**/*.ts\"",
     "lint:fix": "eslint -c .eslintrc.js --fix \"src/**/*.ts\"",
