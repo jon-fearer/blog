@@ -32,6 +32,7 @@
     "@angular/cli": "^12.1.0",
     "@angular/compiler-cli": "^12.1.0",
     "@angular/language-service": "^12.1.0",
+    "@types/jest": "^26.0.24",
     "@types/node": "^8.9.4",
     "@typescript-eslint/eslint-plugin": "^2.20.0",
     "@typescript-eslint/parser": "^2.20.0",
@@ -46,6 +47,8 @@
   },
   "jest": {
     "preset": "jest-preset-angular",
-    "setupFilesAfterEnv": ["<rootDir>/src/setup-jest.ts"]
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setup-jest.ts"
+    ]
   }
 }
