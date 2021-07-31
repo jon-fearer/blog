@@ -8,9 +8,9 @@ describe('PostPreviewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PostPreviewComponent ]
+      declarations: [PostPreviewComponent],
     })
-    .compileComponents();
+        .compileComponents();
   }));
 
   beforeEach(() => {

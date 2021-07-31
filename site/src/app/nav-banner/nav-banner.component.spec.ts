@@ -8,9 +8,9 @@ describe('NavBannerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavBannerComponent ]
+      declarations: [NavBannerComponent],
     })
-    .compileComponents();
+        .compileComponents();
   }));
 
   beforeEach(() => {

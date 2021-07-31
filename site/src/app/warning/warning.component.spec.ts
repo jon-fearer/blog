@@ -8,9 +8,9 @@ describe('WarningComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WarningComponent ]
+      declarations: [WarningComponent],
     })
-    .compileComponents();
+        .compileComponents();
   });
 
   beforeEach(() => {
