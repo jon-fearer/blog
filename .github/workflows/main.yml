@@ -60,7 +60,7 @@ jobs:
         working-directory: site
       - name: Copy Artifacts to S3
         run: aws s3 sync --delete . ${{ secrets.SITE_S3_BUCKET }}
-        working-directory: site/dist/site
+        working-directory: site/dist
       - name: Invalidate CDN Cache
         run: |
           aws cloudfront create-invalidation \
