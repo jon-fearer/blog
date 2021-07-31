@@ -57,9 +57,9 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Build Application
         run: |
+          cd site
           echo $(pwd)
           npm run build
-        working-directory: site
       - name: Copy Artifacts to S3
         run: aws s3 sync --delete . ${{ secrets.SITE_S3_BUCKET }}
         working-directory: site/dist
