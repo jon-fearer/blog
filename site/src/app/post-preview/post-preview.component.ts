@@ -13,6 +13,7 @@ export class PostPreviewComponent implements OnInit, OnChanges {
   @Output() postSelectEvent = new EventEmitter();
   @Input() filterDate: Date;
   @Input() filterTag: string;
+  @Input() filterText: string;
 
   posts: IPost[] = [];
   filteredPosts: IPost[] = [];
@@ -27,6 +28,7 @@ export class PostPreviewComponent implements OnInit, OnChanges {
     this.filterPosts();
   }
 
+  // TODO needs better pattern/signature
   filterPosts() {
     let filteredPosts: IPost[] = this.posts;
     if (this.filterDate) {
@@ -38,6 +40,11 @@ export class PostPreviewComponent implements OnInit, OnChanges {
     }
     if (this.filterTag) {
       filteredPosts = filteredPosts.filter((p: IPost) => p.tags.includes(this.filterTag));
+    }
+    if (this.filterText) {
+      filteredPosts = filteredPosts.filter((p: IPost) => (
+        p.tags.some((t) => t.includes(this.filterText)) || p.title.includes(this.filterText)
+      ));
     }
     this.filteredPosts = filteredPosts;
   }
