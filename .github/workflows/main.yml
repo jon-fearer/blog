@@ -3,7 +3,7 @@ name: Blog Deploy
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   lint:
