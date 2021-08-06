@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Logger } from '../services/logger/logger';
 import { PostPreviewService } from '../services/post-content/post-preview.service';
 import { IPost, IPostPreview } from '../shared/interfaces';
@@ -9,12 +10,12 @@ import { environment } from '../../environments/environment';
   templateUrl: './post-preview.component.html',
   styleUrls: ['./post-preview.component.scss'],
 })
-export class PostPreviewComponent implements OnInit, OnChanges {
+export class PostPreviewComponent implements OnInit, OnChanges, OnDestroy {
   @Output() postSelectEvent = new EventEmitter();
   @Input() filterDate: Date;
   @Input() filterTag: string;
   @Input() filterText: string;
-
+  subscription: Subscription;
   posts: IPost[] = [];
   filteredPosts: IPost[] = [];
 
@@ -26,6 +27,10 @@ export class PostPreviewComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.filterPosts();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   // TODO needs better pattern/signature
@@ -51,7 +56,7 @@ export class PostPreviewComponent implements OnInit, OnChanges {
 
   getPosts(): void {
     this.logger.log('getting posts');
-    this.postPreviewService
+    this.subscription = this.postPreviewService
         .getPostPreviews()
         .subscribe((posts: IPostPreview[]) => {
           this.logger.log('received posts');

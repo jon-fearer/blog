@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { Subscription } from 'rxjs';
 import { PostContentService } from '../services/post-content/post-content.service';
 
 @Component({
@@ -7,8 +8,9 @@ import { PostContentService } from '../services/post-content/post-content.servic
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss'],
 })
-export class PostComponent implements OnInit {
+export class PostComponent implements OnInit, OnDestroy {
   @Input() path: string;
+  subscription: Subscription;
   content: SafeHtml;
 
   constructor(private postContentService: PostContentService, private sanitizer: DomSanitizer) {}
@@ -17,8 +19,12 @@ export class PostComponent implements OnInit {
     this.getPostContent();
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
   getPostContent() {
-    this.postContentService
+    this.subscription = this.postContentService
         .getPostContent(this.path)
         .subscribe((content: string) => {
           this.content = this.sanitizer.bypassSecurityTrustHtml(content);
