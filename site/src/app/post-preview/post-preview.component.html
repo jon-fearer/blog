@@ -1,6 +1,6 @@
 <div class="post-preview-container">
   <div class="no-posts-description" *ngIf="filteredPosts.length === 0">
-    <i>No posts for this month</i>
+    <i>No posts found</i>
   </div>
   <div class="post-summary"
        (click)="postSelectEvent.emit(post.path)"

@@ -18,9 +18,9 @@ export class NavBannerComponent {
   @Output() bioEvent = new EventEmitter();
   @Output() filterPostsByMonth = new EventEmitter();
   @Output() filterPostsByTag = new EventEmitter();
+  @Output() filterPostsByText = new EventEmitter();
   @Input() searchActivated = 'false';
   @ViewChild('search', { static: false }) searchField: ElementRef;
-
   value: Date;
   showCalendar = false;
   showTags = false;
@@ -30,12 +30,10 @@ export class NavBannerComponent {
     if (!event) {
       return;
     }
-
     if (event === 'icon-click') {
       this.showCalendar = !this.showCalendar;
       return;
     }
-
     if ('toElement' in event) {
       if ('className' in event.toElement) {
         if (!event.toElement.className.includes('monthpicker') &&
@@ -61,12 +59,10 @@ export class NavBannerComponent {
     if (!event) {
       return;
     }
-
     if (event === 'icon-click') {
       this.showTags = !this.showTags;
       return;
     }
-
     if ('toElement' in event) {
       if ('className' in event.toElement) {
         if (event.toElement.className !== 'ui-button-text ui-clickable' &&

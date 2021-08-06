@@ -15,6 +15,7 @@
            placeholder="Search"
            #search
            (focusout)="toggleSearch()"
+           (keydown.enter)="filterPostsByText.emit($event)"
            pInputText>
   </div>
 </div>

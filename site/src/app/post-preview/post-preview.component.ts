@@ -47,8 +47,10 @@ export class PostPreviewComponent implements OnInit, OnChanges, OnDestroy {
       filteredPosts = filteredPosts.filter((p: IPost) => p.tags.includes(this.filterTag));
     }
     if (this.filterText) {
+      const lowerCaseFilterText = this.filterText.toLowerCase();
       filteredPosts = filteredPosts.filter((p: IPost) => (
-        p.tags.some((t) => t.includes(this.filterText)) || p.title.includes(this.filterText)
+        p.tags.some((t) => t.toLowerCase().includes(lowerCaseFilterText)) ||
+          p.title.toLowerCase().includes(lowerCaseFilterText)
       ));
     }
     this.filteredPosts = filteredPosts;

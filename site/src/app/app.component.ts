@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IKeyboardEvent } from './shared/interfaces';
 
 @Component({
   selector: 'app-root',
@@ -6,11 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  filterDate: Date;
-  filterTag: string;
   title = 'site';
   currentComponent: 'postPreview'|'post'|'bio' = 'postPreview';
   postPath: string;
+  filterDate: Date;
+  filterTag: string;
+  filterText: string;
 
   togglePost(postPath: string) {
     this.postPath = postPath;
@@ -24,12 +26,21 @@ export class AppComponent {
   filterPostsByMonth(event?: Date) {
     this.filterDate = event;
     this.filterTag = undefined;
+    this.filterText = undefined;
     this.currentComponent = 'postPreview';
   }
 
   filterPostsByTag(event?: string) {
     this.filterTag = event;
     this.filterDate = undefined;
+    this.filterText = undefined;
+    this.currentComponent = 'postPreview';
+  }
+
+  filterPostsByText(event?: IKeyboardEvent) {
+    this.filterDate = undefined;
+    this.filterTag = undefined;
+    this.filterText = event?.target?.value;
     this.currentComponent = 'postPreview';
   }
 }
