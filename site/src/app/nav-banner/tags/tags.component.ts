@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
 import { IPostPreview } from '../../shared/interfaces';
 import { PostPreviewService } from '../../services/post-content/post-preview.service';
-import { Logger } from '../../services/logger/logger';
 
 @Component({
   selector: 'app-tags',
@@ -13,7 +12,7 @@ export class TagsComponent implements OnInit {
 
   tags: string[] = [];
 
-  constructor(private postPreviewService: PostPreviewService, private logger: Logger) {}
+  constructor(private postPreviewService: PostPreviewService) {}
 
   ngOnInit() {
     this.getTags();
@@ -30,7 +29,6 @@ export class TagsComponent implements OnInit {
     this.postPreviewService
         .getPostPreviews()
         .subscribe((posts: IPostPreview[]) => {
-          this.logger.log('received posts');
           const flattenedTags = posts
               .map((el) => el.tags)
               .reduce((acc, val) => acc.concat(val), []);

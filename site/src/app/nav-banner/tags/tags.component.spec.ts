@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TagsComponent } from './tags.component';
 import { PostPreviewService } from '../../services/post-content/post-preview.service';
-import { Logger } from '../../services/logger/logger';
 import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
@@ -14,7 +13,7 @@ describe('TagsComponent', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule, ButtonModule],
       declarations: [TagsComponent],
-      providers: [Logger, PostPreviewService],
+      providers: [PostPreviewService],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   }));
