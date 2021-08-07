@@ -1,15 +1,10 @@
 <div class="banner-container">
-  <i class="pi pi-home"
-     (click)="homeEvent.emit()"></i>
+  <i class="pi pi-home" (click)="homeEvent.emit()"></i>
   <div id="nav-buttons" [@slide]="searchActivated">
-    <i class="nav-button pi pi-user"
-       (click)="bioEvent.emit()"></i>
-    <i class="nav-button pi pi-calendar"
-       (click)="toggleCalendar('icon-click')"></i>
-    <i class="nav-button pi pi-tags"
-       (click)="toggleTags('icon-click')"></i>
-    <i class="nav-button pi pi-search"
-       (click)="toggleSearch()"></i>
+    <i class="nav-button pi pi-user" (click)="bioEvent.emit()"></i>
+    <i class="nav-button pi pi-calendar" (click)="toggleCalendar('icon-click')"></i>
+    <i class="nav-button pi pi-tags" (click)="toggleTags('icon-click')"></i>
+    <i class="nav-button pi pi-search" (click)="toggleSearch()"></i>
     <input id="search-input"
            type="text"
            placeholder="Search"
@@ -18,9 +13,6 @@
            (keydown.enter)="filterPostsByText.emit($event)"
            pInputText>
   </div>
-</div>
-<div class="pi-mobile-hamburger-container">
-  <i class="pi pi-bars"></i>
 </div>
 <div>
   <p-calendar
