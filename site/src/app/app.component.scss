@@ -4,15 +4,3 @@ app-nav-banner {
   left: 12px;
   right: 12px;
 }
-
-app-warning {
-  position: fixed;
-  bottom: 0%;
-  width: 50%;
-  left: 50%;
-  transform: translateX(-50%);
-
-  @media only screen and (max-width: 600px) {
-    width: 98%;
-  }
-}
