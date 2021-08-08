@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
-import { IPostPreview } from '../../shared/interfaces';
+import { IPost } from '../../shared/interfaces';
 import { PostPreviewService } from '../../services/post-content/post-preview.service';
 
 @Component({
@@ -9,7 +9,6 @@ import { PostPreviewService } from '../../services/post-content/post-preview.ser
 })
 export class TagsComponent implements OnInit {
   @Output() tagSelectedEvent = new EventEmitter();
-
   tags: string[] = [];
 
   constructor(private postPreviewService: PostPreviewService) {}
@@ -28,7 +27,7 @@ export class TagsComponent implements OnInit {
   getTags() {
     this.postPreviewService
         .getPostPreviews()
-        .subscribe((posts: IPostPreview[]) => {
+        .subscribe((posts: IPost[]) => {
           const flattenedTags = posts
               .map((el) => el.tags)
               .reduce((acc, val) => acc.concat(val), []);

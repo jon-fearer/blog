@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnChanges, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { PostPreviewService } from '../services/post-content/post-preview.service';
-import { IPost, IPostPreview } from '../shared/interfaces';
+import { IPost } from '../shared/interfaces';
 import { environment } from '../../environments/environment';
 
 @Component({
@@ -58,12 +58,12 @@ export class PostPreviewComponent implements OnInit, OnChanges, OnDestroy {
   getPosts(): void {
     this.subscription = this.postPreviewService
         .getPostPreviews()
-        .subscribe((posts: IPostPreview[]) => {
+        .subscribe((posts: IPost[]) => {
           this.posts = posts.map((el) => ({
             title: el.title,
             path: el.path,
             postedOn: el.postedOn,
-            imagePath: `${environment.contentBasePath}/${el.image}`,
+            imagePath: `${environment.contentBasePath}/${el.imagePath}`,
             tags: el.tags,
           }));
           this.filterPosts();

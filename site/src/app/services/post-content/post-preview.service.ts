@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
-import { IPostPreview } from '../../shared/interfaces';
+import { IPost } from '../../shared/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +10,8 @@ import { IPostPreview } from '../../shared/interfaces';
 export class PostPreviewService {
   constructor(private http: HttpClient) { }
 
-  getPostPreviews(): Observable<IPostPreview[]> {
+  getPostPreviews(): Observable<IPost[]> {
     const url = `${environment.contentBasePath}/index.json`;
-    return this.http.get<IPostPreview[]>(url);
+    return this.http.get<IPost[]>(url);
   }
 }
