@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
@@ -25,25 +25,44 @@ export class NavBannerComponent {
   showCalendar = false;
   showTags = false;
   yearRange = `2021:${new Date().getFullYear()}`;
+  screenHeight: number;
+  screenWidth: number;
+
+  constructor() {
+    this.getScreenSize();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  getScreenSize() {
+    this.screenHeight = window.innerHeight;
+    this.screenWidth = window.innerWidth;
+  }
 
   toggleCalendar(event?: any) {
     if (!event) {
       return;
     }
-    if (event === 'icon-click') {
-      this.showCalendar = !this.showCalendar;
-      return;
+    if (this.isToggleableCalendarClick(event)) {
+      setTimeout(() => this.showCalendar = !this.showCalendar, 100);
     }
-    if ('toElement' in event) {
-      if ('className' in event.toElement) {
-        if (!event.toElement.className.includes('monthpicker') &&
-            !event.toElement.className.includes('datepicker') &&
-            !event.toElement.className.includes('pi-calendar')) {
-          this.showCalendar = !this.showCalendar;
-          return;
-        }
+  }
+
+  private isToggleableCalendarClick(event?: any) {
+    if (event === 'icon-click') {
+      return true;
+    }
+    if (event?.toElement?.className) {
+      const { className } = event.toElement;
+      if (!className.includes('monthpicker') &&
+          !className.includes('datepicker') &&
+          !className.includes('pi-calendar')) {
+        return true;
       }
     }
+    if (this.screenWidth <= 470 && event?.isTrusted === true) {
+      return true;
+    }
+    return false;
   }
 
   toggleSearch() {
@@ -59,19 +78,23 @@ export class NavBannerComponent {
     if (!event) {
       return;
     }
-    if (event === 'icon-click') {
+    if (this.isToggleableTagsClick(event)) {
       this.showTags = !this.showTags;
-      return;
     }
-    if ('toElement' in event) {
-      if ('className' in event.toElement) {
-        if (event.toElement.className !== 'ui-button-text ui-clickable' &&
-            event.toElement.className !== 'tag-container' &&
-            event.toElement.className !== 'pi pi-tags') {
-          this.showTags = !this.showTags;
-          return;
-        }
+  }
+
+  private isToggleableTagsClick(event?: any) {
+    if (event === 'icon-click') {
+      return true;
+    }
+    if (event?.toElement?.className) {
+      const { className } = event.toElement;
+      if (className !== 'ui-button-text ui-clickable' &&
+          className !== 'tag-container' &&
+          className !== 'pi pi-tags') {
+        return true;
       }
     }
+    return false;
   }
 }
