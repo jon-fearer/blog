@@ -1,5 +1,12 @@
 [
   {
+    "title": "Why You Should Still Use Cache Invalidation When Serving SPAs From CloudFront",
+    "path": "posts/2021/08/spa-cache-invalidation.html",
+    "imagePath": "posts/2021/08/spa-cache-invalidation.png",
+    "postedOn": "2021-08-31",
+    "tags": ["Amazon CloudFront", "Amazon S3", "Amazon Web Services", "Angular", "React"]
+  },
+  {
     "title": "I Coauthored a Blog Post for AWS",
     "path": "posts/2021/07/aws-blog-post.html",
     "imagePath": "posts/2021/07/aws-blog-post.jpeg",

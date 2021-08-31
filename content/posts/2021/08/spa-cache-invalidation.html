@@ -1,0 +1,106 @@
+<p>
+    If you've ever set up a single-page application (e.g. one using Angular, React or another framework)
+    to be served from Amazon CloudFront and S3, you have probably come across
+    <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html"
+       target="_blank">
+        this page</a>
+    about invalidations in Amazon's documentation. One of the key takeaways from the doc is that you should version the
+    file names of your assets instead of invalidating CloudFront's cache every time you upload files (i.e.
+    deploy your application) to S3. Specifically, you should create new files when content changes instead
+    of overwriting the files that are already in your S3 bucket. This guidance makes sense because new files
+    will be added to the cache automatically and users won't have to wait for old files to expire. For example,
+    if I improve the quality of an image on my site, the user should only have to refresh the page to view it.
+</p>
+<p>
+    For the purpose of this article, I will consider what this looks like for Angular applications, but the same
+    concepts should apply for other frameworks and build tools such as Webpack. If we look at the output of
+    Angular builds set to "production" mode, we can see that <i>almost</i> all of our files
+    conveniently get a unique hash in the file name, which is in line with the guidance from above.
+    <br>
+    <br>
+    dist/
+    <br>
+    |-- index.html
+    <br>
+    |-- main-es2015.41269647ae8f5df33279.js
+    <br>
+    |-- polyfills-es2015.757c8e8d9412b987e8ca.js
+    <br>
+    |-- primeicons.c55d94a248721abbd220.svg
+    <br>
+    |-- etc...
+    <br>
+    <br>
+    You'll also notice that our index file still has the same name of "index.html".
+    This is because index.html is <i>usually</i> the default homepage that web servers look for when
+    serving an application. In the case of CloudFront, this is called the "Default Root Object". As with most
+    web servers, you can set this to any file that you want, but using index.html is the most common for lots
+    of reasons that are out of the scope of this article.
+</p>
+<p>
+    Assuming that our build output will consist of an index.html file and several files with hashed names every time
+    we deploy the application, the next logical step would be to copy all of these files to our S3 bucket.
+    What will happen is that all the new files (e.g. everything except for the updated index.html) will be delivered
+    to the cache. Unfortunately, the old index.html file will continue to exist in the cache. This means that users will
+    not see our changes, because they will receive the stale index.html file that references the old JavaScript,
+    CSS, images, etc...
+</p>
+<p>
+    There are a lot of useful workarounds for this that others have posted or asked about online. Here are a few of them:
+<ol type="1">
+    <li><b>Serve your index.html file from another AWS service, such as Lambda or EC2, or parameterize the links
+    to be loaded dynamically from a separate backend</b></li>
+    <br>
+    <ul>
+        <li>I believe this is the approach that AWS refers to in the
+            <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/UpdatingExistingObjects.html#ReplacingObjects"
+               target="_blank">
+                documentation</a>, when stating that you should "update the links in your web application
+        or website to point to image_2.jpg". While this makes sense, this adds more services (and therefore
+        more complexity) to our infrastructure and deployments. Ideally, we should be able to host and update
+        our SPAs entirely via CloudFront and S3 to limit management overhead.
+        </li>
+    </ul>
+    <br>
+    <li><b>Configure CloudFront to never cache the index.html file</b></li>
+    <br>
+    <ul>
+        <li>While this would work, I feel that it defeats the purpose of using a CDN. Why would we use a CDN if the
+            edge servers don't cache the index.html file at all? This would also add latency to our site, because the
+            browser will always be waiting for the index.html file to be returned from the S3 bucket instead of the
+            user's local cache or the CDN.
+        </li>
+    </ul>
+    <br>
+    <li><b>Version the index.html filename (e.g. index_1.html, index_2.html) and update the Default Root Object
+        in CloudFront with every deploy</b>
+    </li>
+    <br>
+    <ul>
+        <li>Unfortunately, updating the Default Root Object requires a re-deploy of the CloudFront distribution.
+        Although AWS has made improvements to this process, CloudFront distribution deployments are usually
+            <a href="https://aws.amazon.com/blogs/networking-and-content-delivery/slashing-cloudfront-change-propagation-times-in-2020-recent-changes-and-looking-forward/"
+               target="_blank">five minutes or more</a>
+        and don't solve our problem of getting new content to users quickly.</li>
+    </ul>
+    <br>
+    <li><b>Invalidate the cache with every deploy</b></li>
+    <br>
+    <ul>
+        <li>When we version all other assets besides our Default Root Object, this means we should only have to invalidate
+        this one file (index.html) with every deploy. The downside to this, which is mentioned frequently in the AWS docs,
+        is that invalidations are not free. They are however covered up to a limit under AWS's Free Tier,
+        meaning that most individuals or organizations shouldn't see much cost as a result of this specifically.
+        When compared to the other options, I find this to be the best experience for updating SPAs that are served
+        with CloudFront and S3.</li>
+    </ul>
+</ol>
+</p>
+<p>
+    Depending on the use case, any of the four above options (or one not mentioned here), could be the best choice
+    for pushing out SPA updates to users quickly. I believe that in most scenarios however, invalidating the root object
+    in the cache is the way to go. This can be done with the AWS CLI as part of an automated build process and is
+    how the build for this blog works. As always, I can be reached via email at <b>fearer.jon.blog@gmail.com</b>
+    with any feedback or questions on this post. Thanks for reading! I look forward to adding more content in
+    the future.
+</p>
