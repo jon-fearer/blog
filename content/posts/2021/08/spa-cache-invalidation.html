@@ -46,19 +46,20 @@
     CSS, images, etc...
 </p>
 <p>
-    There are a lot of useful workarounds for this that others have posted or asked about online. Here are a few of them:
+    There are a lot of useful workarounds for this that others have posted or asked about online. Here are a few of
+    them:
 <ol type="1">
     <li><b>Serve your index.html file from another AWS service, such as Lambda or EC2, or parameterize the links
-    to be loaded dynamically from a separate backend</b></li>
+        to be loaded dynamically from a separate backend</b></li>
     <br>
     <ul>
         <li>I believe this is the approach that AWS refers to in the
             <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/UpdatingExistingObjects.html#ReplacingObjects"
                target="_blank">
                 documentation</a>, when stating that you should "update the links in your web application
-        or website to point to image_2.jpg". While this makes sense, this adds more services (and therefore
-        more complexity) to our infrastructure and deployments. Ideally, we should be able to host and update
-        our SPAs entirely via CloudFront and S3 to limit management overhead.
+            or website to point to image_2.jpg". While this makes sense, this adds more services (and therefore
+            more complexity) to our infrastructure and deployments. Ideally, we should be able to host and update
+            our SPAs entirely via CloudFront and S3 to limit management overhead.
         </li>
     </ul>
     <br>
@@ -78,21 +79,29 @@
     <br>
     <ul>
         <li>Unfortunately, updating the Default Root Object requires a re-deploy of the CloudFront distribution.
-        Although AWS has made improvements to this process, CloudFront distribution deployments are usually
+            Although AWS has made improvements to this process, CloudFront distribution deployments are usually
             <a href="https://aws.amazon.com/blogs/networking-and-content-delivery/slashing-cloudfront-change-propagation-times-in-2020-recent-changes-and-looking-forward/"
                target="_blank">five minutes or more</a>
-        and don't solve our problem of getting new content to users quickly.</li>
+            and don't solve our problem of getting new content to users quickly.
+        </li>
     </ul>
     <br>
     <li><b>Invalidate the cache with every deploy</b></li>
     <br>
     <ul>
-        <li>When we version all other assets besides our Default Root Object, this means we should only have to invalidate
-        this one file (index.html) with every deploy. The downside to this, which is mentioned frequently in the AWS docs,
-        is that invalidations are not free. They are however covered up to a limit under AWS's Free Tier,
-        meaning that most individuals or organizations shouldn't see much cost as a result of this specifically.
-        When compared to the other options, I find this to be the best experience for updating SPAs that are served
-        with CloudFront and S3.</li>
+        <li>When we version all other assets besides our Default Root Object, this means we should only have to
+            invalidate
+            this one file (index.html) with every deploy. The downside to this, which is mentioned frequently in the AWS
+            docs,
+            is that invalidations are not free. They are however covered up to a limit under AWS's Free Tier,
+            meaning that most individuals and small to medium organizations shouldn't see much cost as a result of this
+            specifically.
+            In practice, one should still use a wildcard ("/*") for the path when invalidating files, as it
+            <a href="https://aws.amazon.com/blogs/aws/simplified-multiple-object-invalidation-for-amazon-cloudfront/"
+               target="_blank">simplifies implementation and can reduce cost</a>.
+            When compared to the other options, I find this to be the best experience for updating SPAs that are served
+            with CloudFront and S3.
+        </li>
     </ul>
 </ol>
 </p>
