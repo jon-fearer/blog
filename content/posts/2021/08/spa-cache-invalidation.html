@@ -6,7 +6,7 @@
         this page</a>
     about invalidations in Amazon's documentation. One of the key takeaways from the doc is that you should version the
     file names of your assets instead of invalidating CloudFront's cache every time you upload files (i.e.
-    deploy your application) to S3. Specifically, you should create new files when content changes instead
+    deploy your application) to S3. Specifically, you should create new files when deploying your changes instead
     of overwriting the files that are already in your S3 bucket. This guidance makes sense because new files
     will be added to the cache automatically and users won't have to wait for old files to expire. For example,
     if I improve the quality of an image on my site, the user should only have to refresh the page to view it.
