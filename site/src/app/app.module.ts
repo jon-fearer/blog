@@ -15,6 +15,7 @@ import { TagsComponent } from './nav-banner/tags/tags.component';
 import { ButtonModule } from 'primeng/button';
 import { MessagesModule } from 'primeng/messages';
 import { BioComponent } from './bio/bio.component';
+import { RedirectComponent } from './redirect/redirect.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { BioComponent } from './bio/bio.component';
     PostComponent,
     TagsComponent,
     BioComponent,
+    RedirectComponent,
   ],
   imports: [
     BrowserModule,
