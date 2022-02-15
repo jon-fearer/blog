@@ -1,6 +1,8 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
+// noinspection JSMethodCanBeStatic
 @Component({
   selector: 'app-nav-banner',
   templateUrl: './nav-banner.component.html',
@@ -25,18 +27,8 @@ export class NavBannerComponent {
   showCalendar = false;
   showTags = false;
   yearRange = `2021:${new Date().getFullYear()}`;
-  screenHeight: number;
-  screenWidth: number;
 
-  constructor() {
-    this.getScreenSize();
-  }
-
-  @HostListener('window:resize', ['$event'])
-  getScreenSize() {
-    this.screenHeight = window.innerHeight;
-    this.screenWidth = window.innerWidth;
-  }
+  constructor(private deviceService: DeviceDetectorService) {}
 
   toggleCalendar(event?: any) {
     if (!event) {
@@ -52,11 +44,14 @@ export class NavBannerComponent {
       return true;
     }
     if (event?.toElement?.className) {
-      const { className } = event.toElement;
+      const className: string = event.toElement.className;
       if (!className.includes('monthpicker') &&
           !className.includes('datepicker') &&
           !className.includes('yearpicker') &&
           !className.includes('pi-calendar')) {
+        return true;
+      }
+      if (className.includes('monthpicker') && this.deviceService.isMobile()) {
         return true;
       }
     }
