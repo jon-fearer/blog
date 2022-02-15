@@ -69,3 +69,4 @@ site/src/assets/content/
 *.ai
 site/.idea
 .idea
+site/.angular

@@ -55,6 +55,7 @@ export class NavBannerComponent {
       const { className } = event.toElement;
       if (!className.includes('monthpicker') &&
           !className.includes('datepicker') &&
+          !className.includes('yearpicker') &&
           !className.includes('pi-calendar')) {
         return true;
       }
