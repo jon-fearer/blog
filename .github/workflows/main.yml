@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+concurrency:
+  group: blog
+
 jobs:
   lint:
     runs-on: ubuntu-latest
