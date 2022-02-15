@@ -60,9 +60,6 @@ export class NavBannerComponent {
         return true;
       }
     }
-    if (this.screenWidth <= 470 && event?.isTrusted === true) {
-      return true;
-    }
     return false;
   }
 
