@@ -21,6 +21,8 @@ export class AppComponent {
 
   unselectPost() {
     this.currentComponent = 'postPreview';
+    // Reset to most recent posts when loading post previews
+    window.scroll(0, 0);
   }
 
   filterPostsByMonth(event?: Date) {
