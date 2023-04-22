@@ -16,6 +16,8 @@ import { ButtonModule } from 'primeng/button';
 import { MessagesModule } from 'primeng/messages';
 import { BioComponent } from './bio/bio.component';
 import { RedirectComponent } from './redirect/redirect.component';
+import { CountdownComponent } from './countdown/countdown.component';
+import { BlogComponent } from './blog/blog.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { RedirectComponent } from './redirect/redirect.component';
     TagsComponent,
     BioComponent,
     RedirectComponent,
+    CountdownComponent,
+    BlogComponent,
   ],
   imports: [
     BrowserModule,

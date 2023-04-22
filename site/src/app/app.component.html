@@ -1,17 +1,1 @@
-<app-nav-banner
-  (homeEvent)="unselectPost(); filterPostsByMonth(); filterPostsByTag()"
-  (bioEvent)="currentComponent = 'bio'"
-  (filterPostsByMonth)="filterPostsByMonth($event)"
-  (filterPostsByTag)="filterPostsByTag($event)"
-  (filterPostsByText)="filterPostsByText($event)">
-</app-nav-banner>
-<app-post-preview
-  *ngIf="currentComponent === 'postPreview'"
-  (postSelectEvent)="togglePost($event)"
-  [filterDate]="filterDate"
-  [filterTag]="filterTag"
-  [filterText]="filterText">
-</app-post-preview>
-<app-post *ngIf="currentComponent === 'post'" [path]="postPath"></app-post>
-<app-bio *ngIf="currentComponent === 'bio'"></app-bio>
 <router-outlet></router-outlet>

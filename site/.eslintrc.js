@@ -23,6 +23,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'error',
     'max-len': ['error', { 'code': 120 }],
     'object-curly-spacing': ['error', 'always'],
+    'quotes': ['error', 'single']
   },
 };
 
