@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./countdown.component.scss']
 })
 export class CountdownComponent {
-
+  countdownValue = Math.ceil((Date.parse('2024-02-15T07:00:00Z') - Date.now()) / 86400000);
 }
