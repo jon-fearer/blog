@@ -3,9 +3,7 @@ module.exports = {
     'browser': true,
     'es6': true,
   },
-  'extends': [
-    'google',
-  ],
+  'extends': [],
   'globals': {
     'Atomics': 'readonly',
     'SharedArrayBuffer': 'readonly',
@@ -24,6 +22,7 @@ module.exports = {
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'error',
     'max-len': ['error', { 'code': 120 }],
-    'object-curly-spacing': [ 'error', 'always' ],
+    'object-curly-spacing': ['error', 'always'],
   },
 };
+
